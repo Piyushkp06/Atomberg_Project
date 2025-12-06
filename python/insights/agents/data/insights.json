@@ -1,7 +1,7 @@
 {
     "summary": {
-        "generated_at": "2025-12-05T19:07:16.436036Z",
-        "total_documents": 20,
+        "generated_at": "2025-12-06T13:40:10.551252Z",
+        "total_documents": 100,
         "top_findings_count": 4,
         "keyword_opportunities_count": 1
     },
@@ -10,7 +10,7 @@
             "title": "Atomberg has strong positive sentiment",
             "priority": "High",
             "confidence": 0.9,
-            "body": "Avg sentiment = 0.65; positive share (SPV) = 0.26. This is a strong brand perception signal.",
+            "body": "Avg sentiment = 0.78; positive share (SPV) = 0.20. This is a strong brand perception signal.",
             "actions": [
                 {
                     "text": "Promote positive testimonials and extract quotes for ad copy",
@@ -28,7 +28,7 @@
             "title": "Atomberg content drives strong engagement",
             "priority": "High",
             "confidence": 0.9,
-            "body": "Share of Engagement Voice = 0.93 — Atomberg content is resonating (views/likes/comments).",
+            "body": "Share of Engagement Voice = 0.46 — Atomberg content is resonating (views/likes/comments).",
             "actions": [
                 {
                     "text": "Scale influencer partnerships and paid boosts on high-engagement videos",
@@ -46,7 +46,7 @@
             "title": "Proportion of positive mentions is low",
             "priority": "Medium",
             "confidence": 0.9,
-            "body": "SPV = 0.26. Consider improving product messaging and addressing common negative points.",
+            "body": "SPV = 0.20. Consider improving product messaging and addressing common negative points.",
             "actions": [
                 {
                     "text": "Run root-cause analysis on negative snippets to find recurring complaints",
@@ -82,9 +82,9 @@
     "keyword_opportunities": [
         {
             "keyword": "smart fan",
-            "mentions": 7,
+            "mentions": 31,
             "SoV": 1.0,
-            "avg_sentiment": 0.8311,
+            "avg_sentiment": 0.7997,
             "suggestions": [
                 {
                     "text": "Create long-form SEO blog for 'smart fan'",

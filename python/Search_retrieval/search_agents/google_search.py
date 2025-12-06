@@ -7,7 +7,7 @@ class GoogleSearchClient:
         self.cse_id = cse_id
         self.service = build("customsearch", "v1", developerKey=api_key)
 
-    def search(self, query, num_results=20, retries=3):
+    def search(self, query, num_results=50, retries=3):
         formatted_results = []
         
         # Google Custom Search API returns max 10 results per request
@@ -45,6 +45,9 @@ class GoogleSearchClient:
                         })
                     
                     start_index += 10
+                    
+                    # Rate limiting - be nice to the API
+                    time.sleep(0.5)
                     
                     # Break if we've fetched enough or reached the end
                     if len(items) < num or len(formatted_results) >= results_to_fetch:

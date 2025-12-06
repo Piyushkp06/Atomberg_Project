@@ -24,44 +24,55 @@ class SearchAgent:
         # Ensure data directory exists
         Path("data").mkdir(exist_ok=True)
 
-    def run(self, keywords, top_n=20):
+    def run(self, keywords, top_n=50):
         all_results = []
 
         for kw in keywords:
             print(f"\n🔍 Searching for keyword: {kw}")
 
             # Google search
-            google_data = self.google_client.search(kw, num_results=top_n)
-            print(f"  → Google results: {len(google_data)}")
-            all_results.extend(google_data)
+            try:
+                google_data = self.google_client.search(kw, num_results=top_n)
+                print(f"  → Google results: {len(google_data)}")
+                all_results.extend(google_data)
+            except Exception as e:
+                print(f"  ❌ Google search failed: {e}")
 
             # YouTube search
-            youtube_data = self.youtube_client.search(kw, max_results=top_n)
-            print(f"  → YouTube results: {len(youtube_data)}")
-            all_results.extend(youtube_data)
+            try:
+                youtube_data = self.youtube_client.search(kw, max_results=top_n)
+                print(f"  → YouTube results: {len(youtube_data)}")
+                all_results.extend(youtube_data)
+            except Exception as e:
+                print(f"  ❌ YouTube search failed: {e}")
 
         # Save results
         with open("data/raw_results.json", "w", encoding="utf-8") as f:
             json.dump(all_results, f, indent=4, ensure_ascii=False)
         
         print(f"\n✅ Results saved to data/raw_results.json")
+        print(f"📊 Total results collected: {len(all_results)}")
         return all_results
 
 
 if __name__ == "__main__":
-    # Example usage
+    # Expanded keyword list for better coverage
     keywords = [
         "smart fan",
-        "Atomberg fan",
-        "best smart fan India"
     ]
     
     print("🔑 Loading API keys from .env file...\n")
     
     try:
         agent = SearchAgent()
-        results = agent.run(keywords, top_n=10)
-        print(f"\n📊 Total results collected: {len(results)}")
+        print(f"📈 Fetching top 50 results per keyword...")
+        print(f"📝 Total keywords: {len(keywords)}")
+        print(f"🎯 Expected results: ~{len(keywords) * 100} (50 Google + 50 YouTube per keyword)\n")
+        
+        results = agent.run(keywords, top_n=50)
+        
+        print(f"\n✨ Success! Collected {len(results)} total results")
+        
     except ValueError as e:
         print(e)
         print("\n💡 Create a .env file with:")

@@ -5,12 +5,13 @@ class YouTubeSearchClient:
         self.api_key = api_key
         self.youtube = build("youtube", "v3", developerKey=api_key)
 
-    def search(self, query, max_results=15):
+    def search(self, query, max_results=50):
         search_results = self.youtube.search().list(
             part="snippet",
             q=query,
             type="video",
-            maxResults=max_results
+            maxResults=min(max_results, 50),  # YouTube API max is 50
+            order="relevance"
         ).execute()
 
         video_ids = [item["id"]["videoId"] for item in search_results["items"]]
